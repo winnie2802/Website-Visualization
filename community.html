@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Community</title>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <script src="https://kit.fontawesome.com/0b420d52a0.js" crossorigin="anonymous"></script>
+    
+    <style>
+        body {
+            background-image: url('backgroundImage.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-color: black;
+            
+            height: 10000px;
+            
+            margin: 0;
+            
+            font-family: Arial;
+        }
+
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            object-position: center;
+            z-index: -1;
+        }
+
+        .bottomStickyNavigationBar {
+            font-weight: bold;
+            
+            width: 100%;
+            height: 100px;
+            
+            position: fixed;
+            bottom: 0;
+            
+            border-top: 3px solid #a680b8;
+            transition: transform 1s ease-in-out;
+        }
+        .bottomStickyNavigationBar.hidden {
+            transform: translateY(150px);
+        }
+        .bottomStickyNavigationBar.hidden .hide {
+            top: -80px;
+        }
+
+        .scroll {
+            width: calc(100% - 450px);
+            height: 100px;
+            
+            position: fixed;
+            bottom: 0;
+
+            overflow: scroll;
+
+            white-space: nowrap;
+
+            scrollbar-width: none;
+
+            align-content: center;
+        }
+
+        .filesButton {
+            background: linear-gradient(135deg, #ffb570, black);
+            
+            width: 60px;
+            height: 60px;
+
+            border-radius: 10px 0 10px 0;
+            
+            transform: rotate(45deg);
+            
+            border-right: 3px solid #a680b8;
+            border-bottom: 3px solid #a680b8;
+
+            position: absolute;
+            top: -33px;
+            right: 120px;
+
+            cursor: pointer;
+        }
+        .filesIcon {
+            color: white;
+
+            font-size: 30px;
+
+            width: 60px;
+            height: 60px;
+
+            position: absolute;
+            top: -33px;
+            right: 120px;
+
+            text-align: center;
+            align-content: center;
+
+            z-index: 1;
+
+            cursor: pointer;
+        }
+        .filesLabel {
+            color: white;
+            
+            font-size: 20px;
+            width: 120px;
+
+            text-align: center;
+            
+            position: absolute;
+            right: 90px;
+            bottom: 30px;
+
+            cursor: pointer;
+        }
+
+        .projectsButton {
+            background: linear-gradient(135deg, #7ea6e0, black);
+            
+            width: 60px;
+            height: 60px;
+
+            border-radius: 10px 0 10px 0;
+            
+            transform: rotate(45deg);
+            
+            border-right: 3px solid #a680b8;
+            border-bottom: 3px solid #a680b8;
+
+            position: absolute;
+            top: -33px;
+            right: 270px;
+
+            cursor: pointer;
+        }
+        .projectsIcon {
+            color: white;
+
+            font-size: 30px;
+
+            width: 60px;
+            height: 60px;
+
+            position: absolute;
+            top: -33px;
+            right: 270px;
+
+            text-align: center;
+            align-content: center;
+
+            z-index: 1;
+
+            cursor: pointer;
+        }
+        .projectsLabel {
+            color: white;
+            
+            font-size: 20px;
+            width: 120px;
+
+            text-align: center;
+            
+            position: absolute;
+            right: 240px;
+            bottom: 30px;
+
+            cursor: pointer;
+        }
+
+        .binLabel {
+            color: white;
+            
+            font-size: 20px;
+
+            margin-left: 120px;
+
+            cursor: pointer;
+        }
+
+        .hide {
+            background-color: white;
+
+            width: 60px;
+            height: 30px;
+
+            text-align: center;
+            align-content: center;
+
+            border-radius: 0 10px 0 0;
+
+            position: absolute;
+            top: -30px;
+
+            cursor: pointer;
+            z-index: 2;
+
+            transition: top 1s ease-in-out;
+        }
+
+        @media (max-width: 900px) and (orientation: portrait) {
+            body::before {
+                content: "Please rotate your device to landscape mode.";
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background: black;
+                color: white;
+                font-size: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                z-index: 1000;
+            }
+            .video-background, .bottomStickyNavigationBar {
+                display: none;
+            }
+        }
+
+        @media (max-width: 900px) and (orientation: landscape) {
+            .video-background {
+                width: 100vw;
+                height: 100vh;
+                object-fit: cover;
+            }
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop class="video-background">
+        <source src="#" type="video/mp4">
+    </video>
+
+    <div class="bottomStickyNavigationBar">
+        <div class="filesButton" onclick="location.href='files.html'"></div>
+        <div class="filesIcon" onclick="location.href='files.html'"><i class="fa-solid fa-folder-closed"></i></div>
+        <label class="filesLabel" onclick="location.href='files.html'">Files</label>
+        
+        <div class="projectsButton" onclick="location.href='projects.html'"></div>
+        <div class="projectsIcon" onclick="location.href='projects.html'"><i class="fa-solid fa-pen-to-square"></i></div>
+        <label class="projectsLabel" onclick="location.href='projects.html'">Projects</label>
+        
+        <div class="scroll">
+            <label class="binLabel"><i class="fa-solid fa-trash-can"></i> Bin</label>
+        </div>
+
+        <div class="hide"><i class="fa-solid fa-angles-down"></i></div>
+    </div>
+    
+    <script>
+        document.querySelector('.scroll').addEventListener('wheel', (event) => {
+            event.preventDefault();
+            const scrollAmount = event.deltaY * 0.1;
+            event.currentTarget.scrollLeft += scrollAmount;
+        });
+
+        const navBar = document.querySelector('.bottomStickyNavigationBar');
+        const hideButton = document.querySelector('.hide');
+        const hideIcon = hideButton.querySelector('i');
+
+        hideButton.addEventListener('click', () => {
+            const isHidden = navBar.classList.contains('hidden');
+            if (isHidden) {
+                navBar.classList.remove('hidden');
+                hideIcon.classList.remove('fa-angles-up');
+                hideIcon.classList.add('fa-angles-down');
+            } else {
+                navBar.classList.add('hidden');
+                hideIcon.classList.remove('fa-angles-down');
+                hideIcon.classList.add('fa-angles-up');
+            }
+        });
+    </script>
+</body>
+</html>
