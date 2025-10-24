@@ -10,7 +10,7 @@
     
     <style>
         body {
-            background-image: url('backgroundImage.jpg');
+            background-image: url('https://winnie2802.github.io/Website-Visualization/backgroundImage.jpg');
             background-size: cover;
             background-attachment: fixed;
             background-color: black;
@@ -120,6 +120,8 @@
         }
 
         .hideButton {
+            font-size: 20px;
+            
             background-color: white;
 
             width: 60px;
@@ -358,6 +360,141 @@
                 
                 object-fit: cover;
             }
+
+            .avatarSection {
+                width: 30px;
+                height: 30px;
+
+                border: 3px solid #a680b8;
+                
+                top: 15px;
+                left: 60px;
+            }
+
+            .settingsSection {
+                font-size: 13px;
+
+                top: 15px;
+                right: 60px;
+            }
+
+            .mailsSection {
+                font-size: 13px;
+                
+                top: 15px;
+                right: 103px;
+            }
+
+            .bottomStickyNavigationBar {
+                height: 50px;
+
+                border-top: 3px solid #ffb570;
+            }
+            .bottomStickyNavigationBar.hide {
+                transform: translateY(75px);
+            }
+            .bottomStickyNavigationBar.hide .hideButton {
+                top: -35px;
+            }
+
+            .scrollNavigationBar {
+                width: calc(100% - 225px);
+                height: 50px;
+            }
+
+            .hideButton {
+                font-size: 10px;
+
+                width: 30px;
+                height: 10px;
+
+                border-radius: 5px 5px 0 0;
+
+                top: -13px;
+                left: calc(50% - 15px);
+            }
+
+            .communityButton {
+                width: 30px;
+                height: 30px;
+
+                border-radius: 5px 0 5px 0;
+                border-right: 3px solid #ffb570;
+                border-bottom: 3px solid #ffb570;
+
+                top: -16.5px;
+                right: 60px;
+            }
+            .communityIcon {
+                font-size: 15px;
+
+                width: 30px;
+                height: 30px;
+
+                top: -16.5px;
+                right: 61.5px;
+            }
+            .communityLabel {
+                font-size: 10px;
+                
+                width: 60px;
+
+                right: 46.5px;
+                bottom: 15px;
+            }
+
+            .projectsButton {
+                width: 30px;
+                height: 30px;
+
+                border-radius: 5px 0 5px 0;
+                border-right: 3px solid #ffb570;
+                border-bottom: 5px solid #ffb570;
+                
+                top: -16.5px;
+                right: 135px;
+            }
+            .projectsIcon {
+                font-size: 15px;
+
+                width: 30px;
+                height: 30px;
+
+                top: -16.5px;
+                right: 136.5px;
+            }
+            .projectsLabel {
+                font-size: 10px;
+
+                width: 60px;
+                
+                right: 121.5px;
+                bottom: 15px;
+            }
+
+            .binSection {
+                font-size: 10px;
+
+                margin-left: 60px;
+            }
+
+            .starredSection {
+                font-size: 10px;
+
+                margin-left: 30px;
+            }
+
+            .sharedWithMeSection {
+                font-size: 10px;
+
+                margin-left: 30px;
+            }
+
+            .myFilesSection {
+                font-size: 10px;
+
+                margin-left: 30px;
+            }
         }
     </style>
 </head>
@@ -424,7 +561,3 @@
     </script>
 </body>
 </html>
-
-
-
-
