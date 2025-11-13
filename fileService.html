@@ -244,15 +244,21 @@
     </div>
 
     <script>
-        // STEP 2: Display username dynamically
+        // Display username dynamically
         document.getElementById("usernameDisplay").textContent = localStorage.getItem("username");
 
-        // STEP 3: Logout function
+        // Logout function using browser confirm
         function logout() {
-            localStorage.removeItem("username");
-            localStorage.removeItem("user_id");
-            alert("You have been logged out.");
-            window.location.href = "home.html";
+            const confirmed = confirm("Do you want to log out?");
+            if (confirmed) {
+                // Remove user info from localStorage
+                localStorage.removeItem("username");
+                localStorage.removeItem("user_id");
+
+                // Redirect to login page
+                window.location.href = "login.html";
+            }
+            // If not confirmed, do nothing
         }
     </script>
 </body>
