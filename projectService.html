@@ -155,7 +155,46 @@
 
             border-radius: 30px 0px 0px 0px;
         }
+            .content {
+                background-color: white;
+
+                width: max-content;
+                height: max-content;
+
+                border-radius: 30px;
+
+                padding: 10px;
+
+                opacity: 0;
+                animation: fadeIn 1s ease-out forwards;
+            }
+                .welcome {
+                    font-size: 20px;
+                    font-weight: bold;
+                }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px); /* hiệu ứng trượt nhẹ lên */
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
     </style>
+
+    <script>
+        // 🚧 Check login status IMMEDIATELY
+        const username = localStorage.getItem("username");
+        const user_id = localStorage.getItem("user_id");
+
+        if (!username || !user_id) {
+            alert("Please log in first!");
+            window.location.href = "login.html";
+        }
+    </script>
 </head>
 
 <body>
@@ -214,11 +253,29 @@
         </div>
         
         <div class="mainContent">
-
+            <div class="content">
+                <label class="welcome">Welcome, <span id="usernameDisplay"></span>!</label>
+            </div>
         </div>
     </div>
     
-    <!-- Load external JavaScript -->
-    <script src="scripts.js"></script>
+    <script>
+        // Display username dynamically
+        document.getElementById("usernameDisplay").textContent = localStorage.getItem("username");
+
+        // Logout function using browser confirm
+        function logout() {
+            const confirmed = confirm("Do you want to log out?");
+            if (confirmed) {
+                // Remove user info from localStorage
+                localStorage.removeItem("username");
+                localStorage.removeItem("user_id");
+
+                // Redirect to login page
+                window.location.href = "home.html";
+            }
+            // If not confirmed, do nothing
+        }
+    </script>
 </body>
 </html>
