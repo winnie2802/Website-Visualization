@@ -212,8 +212,8 @@
         <label class="welcomeBackLabel">Welcome back!</label>
         <label class="excitedLabel">We're so excited to see you again!</label>
         
-        <label class="emailLabel">Email</label>
-        <input id="email" name="email" class="emailInput" type="text" placeholder="Enter your Email" required>
+        <label class="usernameLabel">Username</label>
+        <input id="username" name="username" class="usernameInput" type="text" placeholder="Enter your Username" required>
 
         <div class="passwordContainer">
             <label class="passwordLabel">Password</label>
@@ -228,7 +228,7 @@
         <button class="loginButton" type="submit">Log in</button>
 
         <div class="registerContainer">
-            <label class="registerLink" onclick="location.href='#'">Need an account? Register</label>
+            <label class="registerLink" onclick="location.href='register.html'">Need an account? Register</label>
         </div>
     </form>
 
@@ -253,7 +253,55 @@
                 setVisible.textContent = 'Show';
             }
         });
+
+        document.getElementById('loginForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('http://localhost:8000/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: new URLSearchParams({
+                        username: username,
+                        password: password
+                    })
+                });
+
+                const data = await response.json();
+                console.log("🔍 Raw response:", data);
+
+                if (response.ok) {
+                    // ✅ Save login session in localStorage
+                    localStorage.setItem("username", data.username);
+                    localStorage.setItem("user_id", data.user_id);
+                    
+                    alert(`✅ Login successful! Welcome, ${data.username}`);
+                    window.location.href = 'fileService.html';
+                } else {
+                    // 👇 Handle both object and array error formats
+                    let errorMessage = "❌ Login failed.";
+
+                    if (Array.isArray(data)) {
+                        // Validation error list from FastAPI
+                        errorMessage = data.map(err => err.msg).join(", ");
+                    } else if (data.detail) {
+                        // Normal HTTPException error
+                        errorMessage = data.detail;
+                    }
+
+                    alert(`❌ ${errorMessage}`);
+                }
+
+            } catch (error) {
+                console.error("❌ Network Error:", error);
+                alert("⚠️ Unable to connect to the server.");
+            }
+        });
     </script>
 </body>
 </html>
-
