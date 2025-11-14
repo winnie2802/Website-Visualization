@@ -117,7 +117,7 @@
 
             border-radius: 0px 30px 0px 0px;
         }
-            .sideBar .button {
+            .createMenu {
                 background-color: black;
                 color: white;
                 
@@ -125,25 +125,114 @@
                 font-weight: bold;
                 
                 width: 200px;
-                height: 40px;
+                height: 20px;
                 
-                border: none;
+                border: 1px solid white;
                 border-radius: 20px;
 
-                display: flex;
-                align-items: center;
-
-                padding-left: 10px;
-
-                margin-bottom: 10px;
+                padding: 10px;
 
                 cursor: pointer;
-                transition: 300ms;
+                transition: 600ms;
+                transition-delay: 300ms;
             }
-                .sideBar .button:hover {
+                .createMenu:hover {
                     background-color: white;
                     color: black;
+
+                    height: 130px;
+
+                    transition: 600ms;
                 }
+                    .createMenu .subButtonContainer {
+                        margin-top: 10px;
+                        
+                        visibility: hidden;   
+                    }
+                        .createMenu .subButton {
+                            background-color: white;
+                            color: black;
+                            
+                            font-size: 20px;
+                            font-weight: bold;
+                            
+                            width: 180px;
+                            height: 40px;
+                            
+                            border: 1px solid black;
+                            border-radius: 40px;
+
+                            display: flex;
+
+                            padding-left: 10px;
+                            padding-right: 10px;
+
+                            cursor: pointer;
+                            transition: 300ms;
+                        }
+                            .createMenu .subButton:hover {
+                                background-color: black;
+                                color: white;
+                            }
+            
+            .uploadMenu {
+                background-color: black;
+                color: white;
+                
+                font-size: 20px;
+                font-weight: bold;
+                
+                width: 200px;
+                height: 20px;
+                
+                border: 1px solid white;
+                border-radius: 20px;
+
+                padding: 10px;
+
+                cursor: pointer;
+                transition: 600ms;
+                transition-delay: 300ms;
+            }
+                .uploadMenu:hover {
+                    background-color: white;
+                    color: black;
+
+                    height: 130px;
+
+                    transition: 600ms;
+                }
+                    .uploadMenu .subButtonContainer {
+                        margin-top: 10px;
+                        
+                        visibility: hidden;
+                    }
+                        .uploadMenu .subButton {
+                            background-color: white;
+                            color: black;
+                            
+                            font-size: 20px;
+                            font-weight: bold;
+                            
+                            width: 180px;
+                            height: 40px;
+                            
+                            border: 1px solid black;
+                            border-radius: 20px;
+
+                            display: flex;
+
+                            padding-left: 10px;
+                            padding-right: 10px;
+
+                            cursor: pointer;
+                            transition: 300ms;
+                        }
+                            .uploadMenu .subButton:hover {
+                                background-color: black;
+                                color: white;
+                            }
+
         .mainContent {
             flex: 1;
             
@@ -176,7 +265,7 @@
             @keyframes fadeIn {
                 from {
                     opacity: 0;
-                    transform: translateY(30px); /* hiệu ứng trượt nhẹ lên */
+                    transform: translateY(30px);
                 }
                 to {
                     opacity: 1;
@@ -230,15 +319,56 @@
     </div>
     <div class="contentArea">
         <div class="sideBar">  
-            <div class="button">
-                <i class="fa-solid fa-upload" style="margin-right: 10px;"></i>
-                <label style="cursor: pointer;">Upload</label>
+            <div class="createMenu" id="createMenu">
+                <div style="display: flex; align-items: center;">
+                    <i class="fa-solid fa-circle-plus" style="margin-right: 10px;"></i>
+                    <label style="cursor: pointer;">Create</label>
+                </div>
+
+                <div class="subButtonContainer" id="createSubButtonContainer">
+                    <div class="subButton">
+                        <div style="display: flex; align-items: center;">
+                            <i class="fa-regular fa-file" style="margin-right: 10px;"></i>
+                            <label style="cursor: pointer;">File</label>
+                        </div>
+                    </div>
+
+                    <div class="subButton" style="margin-top: 10px;">
+                        <div style="display: flex; align-items: center;">
+                            <i class="fa-regular fa-folder" style="margin-right: 10px;"></i>
+                            <label style="cursor: pointer;">Folder</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="uploadMenu" id="uploadMenu" style="margin-top: 10px;">
+                <div style="display: flex; align-items: center;">
+                    <i class="fa-solid fa-upload" style="margin-right: 10px;"></i>
+                    <label style="cursor: pointer;">Upload</label>
+                </div>
+
+                <div class="subButtonContainer" id="uploadSubButtonContainer">
+                    <div class="subButton">
+                        <div style="display: flex; align-items: center;">
+                            <i class="fa-regular fa-file" style="margin-right: 10px;"></i>
+                            <label style="cursor: pointer;">File</label>
+                        </div>
+                    </div>
+
+                    <div class="subButton" style="margin-top: 10px;">
+                        <div style="display: flex; align-items: center;">
+                            <i class="fa-regular fa-folder" style="margin-right: 10px;"></i>
+                            <label style="cursor: pointer;">Folder</label>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="mainContent">
             <div class="content">
-                <label class="welcome">Welcome, <span id="usernameDisplay"></span>!</label>
+                <label class="welcome">Hello, <span id="usernameDisplay"></span>!</label>
             </div>
         </div>
     </div>
@@ -247,19 +377,37 @@
         // Display username dynamically
         document.getElementById("usernameDisplay").textContent = localStorage.getItem("username");
 
-        // Logout function using browser confirm
         function logout() {
-            const confirmed = confirm("Do you want to log out?");
+            const confirmed = confirm("Log out? We will miss you!");
             if (confirmed) {
                 // Remove user info from localStorage
                 localStorage.removeItem("username");
                 localStorage.removeItem("user_id");
 
-                // Redirect to login page
                 window.location.href = "home.html";
             }
-            // If not confirmed, do nothing
         }
+
+        // Show/Hide menus on hover
+        const createMenu = document.getElementById("createMenu");
+        const createSubButtonContainer = document.getElementById("createSubButtonContainer");
+
+        const uploadMenu = document.getElementById("uploadMenu");
+        const uploadSubButtonContainer = document.getElementById("uploadSubButtonContainer");
+
+        createMenu.addEventListener("mouseover", () => {
+            createSubButtonContainer.style.visibility = "visible";
+        });
+        createMenu.addEventListener("mouseout", () => {
+            createSubButtonContainer.style.visibility = "hidden";
+        });
+
+        uploadMenu.addEventListener("mouseover", () => {
+            uploadSubButtonContainer.style.visibility = "visible";
+        });
+        uploadMenu.addEventListener("mouseout", () => {
+            uploadSubButtonContainer.style.visibility = "hidden";
+        });
     </script>
 </body>
 </html>
