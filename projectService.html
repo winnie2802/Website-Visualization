@@ -127,13 +127,14 @@
                 width: 200px;
                 height: 40px;
                 
-                border: none;
-                border-radius: 20px;
+                border: 1px solid white;
+                border-radius: 40px;
 
                 display: flex;
                 align-items: center;
 
                 padding-left: 10px;
+                padding-right: 10px;
 
                 margin-bottom: 10px;
 
@@ -232,11 +233,11 @@
     <div class="contentArea">    
         <div class="sideBar">  
             <div class="button">
-                <i class="fa-solid fa-square-plus" style="margin-right: 10px;"></i>
+                <i class="fa-solid fa-circle-plus" style="margin-right: 10px;"></i>
                 <label style="cursor: pointer;">Create a project</label>
             </div>
             
-            <div class="button">
+            <div class="button" style="margin-top: 20px;">
                 <i class="fa-solid fa-arrow-up-right-dots" style="margin-right: 10px;"></i>
                 <label style="cursor: pointer;">MoSCoW</label>
             </div>
@@ -254,7 +255,7 @@
         
         <div class="mainContent">
             <div class="content">
-                <label class="welcome">Welcome, <span id="usernameDisplay"></span>!</label>
+                <label class="welcome">Hello, <span id="usernameDisplay"></span>!</label>
             </div>
         </div>
     </div>
@@ -279,4 +280,3 @@
     </script>
 </body>
 </html>
-
